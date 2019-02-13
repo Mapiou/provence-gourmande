@@ -44,6 +44,25 @@ ActiveRecord::Schema.define(version: 2019_02_13_112010) do
     t.string "name"
     t.text "description"
     t.string "photo"
+    
+  create_table "restaurant_reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_reviews_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "photo"
+    t.string "address"
+    t.string "phone"
+    t.string "price"
+    t.text "menu"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,4 +70,5 @@ ActiveRecord::Schema.define(version: 2019_02_13_112010) do
   add_foreign_key "doses", "ingredients"
   add_foreign_key "doses", "recipes"
   add_foreign_key "recipe_reviews", "recipes"
+  add_foreign_key "restaurant_reviews", "restaurants"
 end
