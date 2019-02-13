@@ -1,6 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for :title, "Accueil" %>
 
-<%= link_to "Voir les recettes", recipes_path %>
+<%= render 'components/banner' %>
 
-<%= link_to "Voir les restaurants", restaurants_path %>
+<div class="container">
+  <div class="row">
+
+      <div class="col-xs-12 col-sm-4 icon-card text-center">
+        <p><i class="fas fa-lemon"></i></p>
+        <h2>Recettes</h2>
+        <p>Retinete igitur in provincia diutius eum, qui de sociis cum hostibus, de civibus cum sociis faciat pactiones, qui hoc etiam se pluris esse quam collegam putet.</p>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 icon-card text-center">
+        <p><i class="fas fa-utensils"></i></p>
+        <h2>Restaurants</h2>
+        <p>Retinete igitur in provincia diutius eum, qui de sociis cum hostibus, de civibus cum sociis faciat pactiones, qui hoc etiam se pluris esse quam collegam putet.</p>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 icon-card text-center">
+        <p><i class="fas fa-map-pin"></i></p>
+        <h2>Provence</h2>
+        <p>Retinete igitur in provincia diutius eum, qui de sociis cum hostibus, de civibus cum sociis faciat pactiones, qui hoc etiam se pluris esse quam collegam putet.</p>
+      </div>
+  </div>
+</div>
