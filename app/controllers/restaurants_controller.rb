@@ -2,7 +2,14 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.where.not(latitude: nil, longitude: nil)
+    @restaurants = @restaurants.near(params[:city], 5) if params[:city].present?
+    @markers = @restaurants.map do |restaurant|
+      {
+        lng: restaurant.longitude,
+        lat: restaurant.latitude
+      }
+    end
   end
 
   def show
