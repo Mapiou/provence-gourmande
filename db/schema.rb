@@ -44,7 +44,10 @@ ActiveRecord::Schema.define(version: 2019_02_13_112010) do
     t.string "name"
     t.text "description"
     t.string "photo"
-    
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurant_reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -58,11 +61,11 @@ ActiveRecord::Schema.define(version: 2019_02_13_112010) do
     t.string "name"
     t.text "description"
     t.string "photo"
+    t.string "city"
     t.string "address"
     t.string "phone"
     t.string "price"
     t.text "menu"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
