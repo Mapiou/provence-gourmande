@@ -1,58 +1,60 @@
-<div class="search">
-  <h1>Les restaurants provençaux de la région</h1>
+<% content_for :title, "Restaurants" %>
 
-  <%= form_tag restaurants_path, method: :get do %>
-    <div class="form">
-      <input type="search" name="city" id="single-country-search" placeholder="Dans quelle ville cherchez-vous un restaurant provençal ?" />
-      <script src="https://cdn.jsdelivr.net/npm/places.js@1.15.5"></script>
-      <%= submit_tag "Rechercher", class: "btn-primary" %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="search">
+    <h1>Les restaurants provençaux de la région</h1>
 
-</div>
-
-<div class = "results-container">
-
-  <div class = "results">
-    <% @restaurants.each do |restaurant| %>
-      <p> <%= restaurant.name %> </p>
+    <%= form_tag restaurants_path, method: :get do %>
+      <div class="form">
+        <input type="search" name="city" id="single-country-search" placeholder="Dans quelle ville cherchez-vous un restaurant provençal ?" />
+        <script src="https://cdn.jsdelivr.net/npm/places.js@1.15.5"></script>
+        <%= submit_tag "Rechercher", class: "btn-primary" %>
+      </div>
     <% end %>
+
   </div>
 
-  <div
-    id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  >
-  </div>
+  <div class = "results-container">
 
+    <div class = "results">
+      <% @restaurants.each do |restaurant| %>
+        <p> <%= restaurant.name %> </p>
+      <% end %>
+    </div>
+
+    <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    >
+    </div>
+
+  </div>
 </div>
-
-
 
 <script>
-(function() {
-  var placesAutocomplete = places({
-    appId: 'plINSP579YNT',
-    apiKey: 'b5541c94bf7ca33633569819bfe34950',
-    container: document.querySelector('#single-country-search')
-  }).configure({
-    countries: ['fr']
-  });
+  (function() {
+    var placesAutocomplete = places({
+      appId: 'plINSP579YNT',
+      apiKey: 'b5541c94bf7ca33633569819bfe34950',
+      container: document.querySelector('#single-country-search')
+    }).configure({
+      countries: ['fr']
+    });
 
-  var $address = document.querySelector('#single-country-address-value')
-  placesAutocomplete.on('change', function(e) {
-    $address.textContent = e.suggestion.value
-  });
+    var $address = document.querySelector('#single-country-address-value')
+    placesAutocomplete.on('change', function(e) {
+      $address.textContent = e.suggestion.value
+    });
 
-  placesAutocomplete.on('clear', function() {
-    $address.textContent = 'none';
-  });
+    placesAutocomplete.on('clear', function() {
+      $address.textContent = 'none';
+    });
 
-  var $country = document.querySelector('#country-selector')
-  $country.addEventListener('change', function(e){
-    placesAutocomplete.configure({ countries: [e.target.value] });
-  })
+    var $country = document.querySelector('#country-selector')
+    $country.addEventListener('change', function(e){
+      placesAutocomplete.configure({ countries: [e.target.value] });
+    })
 
-})();
+  })();
 </script>

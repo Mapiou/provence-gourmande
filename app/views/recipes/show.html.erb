@@ -1,40 +1,44 @@
-<h1><%= @recipe.name %></h1>
-<%= link_to "Retour à la liste des recettes", recipes_path %>
-<%= image_tag @recipe.photo %>
-<p><%= @recipe.description %></p>
-<small>
-  <%= link_to edit_recipe_path(@recipe) do %><i class="fas fa-pencil-alt"></i><% end %>
+<% content_for :title, @recipe.name %>
 
-  <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
-</small>
+<div class="container">
+  <h1><%= @recipe.name %></h1>
+  <%= link_to "Retour à la liste des recettes", recipes_path %>
+  <%= image_tag @recipe.photo %>
+  <p><%= @recipe.description %></p>
+  <small>
+    <%= link_to edit_recipe_path(@recipe) do %><i class="fas fa-pencil-alt"></i><% end %>
 
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Commentaires</h3>
-    <% if @recipe.recipe_reviews.empty? %>
-      <p>Déposez un commentaire</p>
-    <% else %>
-      <ul class="list-group">
-        <% @recipe.recipe_reviews.each do |review| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span class="badge badge-primary badge-pill">
-              <% counter = 0 %>
-              <% 5.times do %>
-                <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-                <% counter += 1 %>
-              <% end %>
-            </span>
-            <%= review.content %>
-          </li>
-        <% end %>
-      </ul>
+    <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fas fa-trash-alt"></i>
     <% end %>
+  </small>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Commentaires</h3>
+      <% if @recipe.recipe_reviews.empty? %>
+        <p>Déposez un commentaire</p>
+      <% else %>
+        <ul class="list-group">
+          <% @recipe.recipe_reviews.each do |review| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="badge badge-primary badge-pill">
+                <% counter = 0 %>
+                <% 5.times do %>
+                  <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                  <% counter += 1 %>
+                <% end %>
+              </span>
+              <%= review.content %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <%= render "recipe_reviews/new", recipe: @recipe, recipe_review: @recipe_review %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render "recipe_reviews/new", recipe: @recipe, recipe_review: @recipe_review %>
+    </div>
   </div>
 </div>
