@@ -9,6 +9,31 @@ require 'open-uri'
 require 'nokogiri'
 require 'active_support/all'
 
+puts 'Creating fake recipes...'
+
+Recipe.destroy_all
+
+Recipe.create!(
+  name: "Ratatouille",
+  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
+  photo: "https://picsum.photos/300/300"
+)
+
+Recipe.create!(
+  name: "Tian",
+  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
+  photo: "https://picsum.photos/300/300"
+)
+
+Recipe.create!(
+  name: "Bouillabaisse",
+  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
+  photo: "https://picsum.photos/300/300"
+)
+
+puts 'Finished!'
+
+
 i = 1
 
 10.times do
@@ -77,3 +102,4 @@ i = 1
     end
   end
 end
+
