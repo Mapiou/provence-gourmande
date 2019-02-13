@@ -1,3 +1,7 @@
-<h1>Ajouter une recette</h1>
+<% content_for :title, "Ajouter une recette" %>
 
-<%= render 'form', recipe: @recipe %>
+<div class="container">
+  <h1>Ajouter une recette</h1>
+
+  <%= render 'form', recipe: @recipe %>
+</div>
