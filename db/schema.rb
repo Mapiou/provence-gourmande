@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_02_13_135821) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(version: 2019_02_13_135821) do
     t.string "name"
     t.text "description"
     t.string "photo"
-    t.string "city"
     t.string "address"
     t.string "phone"
     t.string "price"
