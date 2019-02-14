@@ -1,0 +1,10 @@
+<a href="<%= restaurant_path(restaurant) %>" style="text-decoration: none">
+  <div class="marker-card-category"
+    <% if restaurant.photo.present? %>
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= restaurant.photo %>)" >
+    <% else %>
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url('leonard-cotte-300248-unsplash.jpg') %> )">
+    <% end %>
+    <%= restaurant.name %>
+  </div>
+</a>

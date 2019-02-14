@@ -3,7 +3,7 @@
 }
 
 .form {
-  padding: 3% 1%;
+  padding: 3% 0% ;
   display: flex;
 }
 
@@ -16,7 +16,6 @@
 .restaurant-results {
   width : 50%;
   margin-left: 3%;
-  left: 0;
 }
 
 .fixed-part {
@@ -79,11 +78,27 @@
   background-position: center;
   height: 180px;
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
   align-items: center;
   color: white;
-  font-size: 24px;
-  font-weight: medium;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.marker-card-category {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 180px;
+  width: 180px;
+  justify-content: center !important;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);

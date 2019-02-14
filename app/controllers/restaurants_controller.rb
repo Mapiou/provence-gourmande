@@ -7,13 +7,14 @@ class RestaurantsController < ApplicationController
     @markers = @restaurants.map do |restaurant|
       {
         lng: restaurant.longitude,
-        lat: restaurant.latitude
+        lat: restaurant.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant })
       }
     end
   end
 
   def show
-    @restaurant_reviews = RestaurantReview.select {|review| review.restaurant_id == @restaurant.id}
+    @restaurant_review = RestaurantReview.new
   end
 
   def new
