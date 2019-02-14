@@ -5,34 +5,64 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
 require 'nokogiri'
 require 'active_support/all'
 
-puts 'Creating fake recipes...'
+puts 'Scraping 750g recipes...'
 
-Recipe.destroy_all
+i = 1
 
-Recipe.create!(
-  name: "Ratatouille",
-  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
-  photo: "https://picsum.photos/300/300"
-)
+10.times do
 
-Recipe.create!(
-  name: "Tian",
-  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
-  photo: "https://picsum.photos/300/300"
-)
+  url = "https://www.750g.com/recettes_cuisine_provencale.htm?page=#{i}"
+  html_file = open(url).read
+  html_doc = Nokogiri::HTML(html_file)
 
-Recipe.create!(
-  name: "Bouillabaisse",
-  description: "Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.",
-  photo: "https://picsum.photos/300/300"
-)
+  i += 1
 
-puts 'Finished!'
+  recipes_url = []
+  html_doc.search('h2').each do |h2|
+    if h2.search('a').attribute('href').present?
+      recipes_url << "https://www.750g.com" + h2.search('a').attribute('href').to_s
+    end
+  end
 
+  recipes = []
+
+  recipes_url.each do |url|
+    html_file = open(url).read
+    html_doc = Nokogiri::HTML(html_file)
+
+    recipe_details = {}
+    recipe_details[:name] = html_doc.search('h1').first.text
+    recipe_details[:description] = html_doc.search('div.summary > p').text
+    photo = html_doc.search('div.c-diapo__image img').attribute('src')
+    if photo.nil?
+      recipe_details[:photo] = ""
+    else
+      recipe_details[:photo] = photo.value
+    end
+
+    recipes << recipe_details
+  end
+
+  recipes.each do |recipe|
+    if Recipe.find_or_create_by(name: recipe[:name]) do |element|
+        element.name = recipe[:name]
+        element.description = recipe[:description]
+        element.photo = recipe[:photo]
+        element.save!
+      end
+    end
+  end
+
+end
+
+puts 'Scraping 750g recipes finished!'
+
+puts 'Scraping Internaute restaurants...'
 
 i = 1
 
@@ -103,3 +133,4 @@ i = 1
   end
 end
 
+puts 'Scraping Internaute restaurants finished!'
