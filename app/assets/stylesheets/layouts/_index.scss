@@ -3,3 +3,17 @@
 // @import "dashboard";
 // @import "profile";
 // @import "map";
+
+.container {
+  margin-top: 70px;
+}
+
+a {
+  color: $green;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $green;
+  opacity: 0.9;
+}

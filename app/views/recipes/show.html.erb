@@ -1,24 +1,28 @@
 <% content_for :title, @recipe.name %>
 
 <div class="container">
-  <h1><%= @recipe.name %></h1>
-  <%= link_to "Retour à la liste des recettes", recipes_path %>
-  <%= image_tag @recipe.photo %>
+  <div class="page-header">
+    <h1><%= @recipe.name %></h1>
+  </div>
+  <div>
+    <%= link_to "Retour à la liste des recettes", recipes_path %>
+  </div>
+  <div>
+    <%= image_tag @recipe.photo, width: 200 %>
+  </div>
   <p><%= @recipe.description %></p>
-  <small>
+  <div>
     <%= link_to edit_recipe_path(@recipe) do %><i class="fas fa-pencil-alt"></i><% end %>
 
     <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
-  </small>
+  </div>
 
   <div class="row">
     <div class="col-xs-12">
-      <h3>Commentaires</h3>
-      <% if @recipe.recipe_reviews.empty? %>
-        <p>Déposez un commentaire</p>
-      <% else %>
+      <% unless @recipe.recipe_reviews.empty? %>
+        <h3>Commentaires</h3>
         <ul class="list-group">
           <% @recipe.recipe_reviews.each do |review| %>
             <li class="list-group-item d-flex justify-content-between align-items-center">
