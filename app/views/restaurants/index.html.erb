@@ -1,36 +1,42 @@
 <% content_for :title, "Restaurants" %>
 
-<div class="container">
-  <div class="search">
+
+<div class="results-container">
+  <div class="restaurant-results ">
     <h1>Les restaurants provençaux de la région</h1>
-
-    <%= form_tag restaurants_path, method: :get do %>
-      <div class="form">
-        <input type="search" name="city" id="single-country-search" placeholder="Dans quelle ville cherchez-vous un restaurant provençal ?" />
-        <script src="https://cdn.jsdelivr.net/npm/places.js@1.15.5"></script>
-        <%= submit_tag "Rechercher", class: "btn-primary" %>
-      </div>
-    <% end %>
-
-  </div>
-
-  <div class = "results-container">
-
-    <div class = "results">
+    <div class="restaurant-cards">
       <% @restaurants.each do |restaurant| %>
-        <p> <%= restaurant.name %> </p>
+        <a href="<%= restaurant_path(restaurant) %>" style="text-decoration: none">
+          <div class="restaurant-card-category"
+            <% if restaurant.photo.present? %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= restaurant.photo %>)" >
+            <% else %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url('leonard-cotte-300248-unsplash.jpg') %> )">
+            <% end %>
+            <%= restaurant.name %>
+          </div>
+        </a>
       <% end %>
     </div>
-
+  </div>
+  <div class="fixed-part">
+    <div class="search">
+    <%= form_tag restaurants_path, method: :get do %>
+          <div class="form">
+            <input type="search" name="city" id="single-country-search" placeholder="Dans quelle ville cherchez-vous un restaurant provençal ?" />
+            <script src="https://cdn.jsdelivr.net/npm/places.js@1.15.5"></script>
+            <%= submit_tag "Rechercher", class: "btn-primary" %>
+          </div>
+        <% end %>
+    </div>
     <div
       id="map"
       data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    >
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" >
     </div>
-
   </div>
 </div>
+
 
 <script>
   (function() {
