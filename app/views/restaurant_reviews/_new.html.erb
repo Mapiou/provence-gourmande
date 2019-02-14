@@ -2,6 +2,5 @@
 <%= simple_form_for [@restaurant, @restaurant_review] do |f| %>
   <%= f.input :rating, collection: 0..5 %>
   <%= f.input :content %>
-  <%= f.submit "Ajouter un commentaire" %>
+  <%= f.submit "Ajouter un commentaire", class: "btn btn-success btn-lg" %>
 <% end %>
-

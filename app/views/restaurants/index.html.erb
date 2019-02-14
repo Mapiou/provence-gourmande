@@ -1,9 +1,12 @@
 <% content_for :title, "Restaurants" %>
 
 
-<div class="results-container ">
-  <div class="restaurant-results">
-    <h1>Les restaurants provençaux de la région</h1>
+<div class="results-container">
+  <div class="restaurant-results ">
+    <div class="page-header">
+      <h1>Les restaurants provençaux de la région</h1>
+    </div>
+
     <div class="restaurant-cards">
       <% @restaurants.each do |restaurant| %>
         <a href="<%= restaurant_path(restaurant) %>" style="text-decoration: none">
@@ -36,7 +39,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
   (function() {

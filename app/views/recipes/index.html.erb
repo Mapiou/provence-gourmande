@@ -1,15 +1,44 @@
 <% content_for :title, "Recettes" %>
 
 <div class="container">
-  <h1>Les recettes provençales</h1>
-  <p>Venez découvrir les meilleurs recettes de notre région</p>
+  <div class="page-header">
+    <h1>Les recettes provençales</h1>
+  </div>
+  <p>Venez découvrir les meilleures recettes de notre région.</p>
   <%= link_to "Ajouter une recette", new_recipe_path %>
 
-  <% @recipes.each do |recipe| %>
-    <div>
-      <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
-      <p><%= recipe.description %></p>
-      <%= image_tag recipe.photo, alt: recipe.name, width: 200 %>
-    </div>
-  <% end %>
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo.present? ? recipe.photo : image_url('recipe.jpg') %>); background-size: cover;">
+              <%= link_to "", recipe_path(recipe), class: "card-link" %>
+              <div class="card-category">
+                <p></p>
+              </div>
+              <div class="card-desc">
+                <h2><%= recipe.name %></h2>
+                <p><%= recipe.description[0..50] + '...' %></p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-date">
+                <p>Posted on 22/11/19</p>
+              </div>
+              <div class="card-links">
+                <ul>
+                  <li><a href="#"><i class="fas fa-star"></i></a></li>
+                  <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fas fa-share"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <div id="btn-to-up">
+    <a href="#"><i class="fas fa-caret-square-up"></i></a>
+  </div>
 </div>
