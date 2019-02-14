@@ -3,17 +3,18 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.where.not(latitude: nil, longitude: nil)
-    @restaurants = @restaurants.near(params[:city], 5) if params[:city].present?
+    @restaurants = @restaurants.near(params[:city], 3) if params[:city].present?
     @markers = @restaurants.map do |restaurant|
       {
         lng: restaurant.longitude,
-        lat: restaurant.latitude
+        lat: restaurant.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant })
       }
     end
   end
 
   def show
-    @restaurant_reviews = RestaurantReview.select {|review| review.restaurant_id == @restaurant.id}
+    @restaurant_review = RestaurantReview.new
   end
 
   def new

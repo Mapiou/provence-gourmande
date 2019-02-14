@@ -1,0 +1,7 @@
+<h3>Ajouter un commentaire</h3>
+<%= simple_form_for [@restaurant, @restaurant_review] do |f| %>
+  <%= f.input :rating, collection: 0..5 %>
+  <%= f.input :content %>
+  <%= f.submit "Ajouter un commentaire" %>
+<% end %>
+
