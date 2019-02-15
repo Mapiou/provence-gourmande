@@ -4,8 +4,21 @@
   <div class="page-header">
     <h1>Les recettes provençales</h1>
   </div>
-  <p>Venez découvrir les meilleures recettes de notre région.</p>
-  <%= link_to "Ajouter une recette", new_recipe_path %>
+
+  <div class="recipes-search">
+    <%= form_tag recipes_path, method: :get, class: "form-inline" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Ex : Bouillabaisse"
+      %>
+      <%= submit_tag 'Rechercher', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Ajouter une recette", new_recipe_path %>
+  </div>
 
   <div class="row">
     <% @recipes.each do |recipe| %>
