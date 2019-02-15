@@ -24,7 +24,7 @@
     <% @recipes.each do |recipe| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="card">
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo.present? ? recipe.photo : image_url('recipe.jpg') %>); background-size: cover;">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= recipe.photo.present? ? recipe.photo : image_url('recipe.jpg') %>); background-size: cover;">
               <%= link_to "", recipe_path(recipe), class: "card-link" %>
               <div class="card-category">
                 <p></p>
@@ -36,7 +36,7 @@
             </div>
             <div class="card-footer">
               <div class="card-date">
-                <p>Posted on 22/11/19</p>
+                <p><%= recipe.difficulty %></p>
               </div>
               <div class="card-links">
                 <ul>

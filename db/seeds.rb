@@ -36,14 +36,31 @@ i = 1
     html_doc = Nokogiri::HTML(html_file)
 
     recipe_details = {}
+
     recipe_details[:name] = html_doc.search('h1').first.text
+
     recipe_details[:description] = html_doc.search('div.summary > p').text
+
     photo = html_doc.search('div.c-diapo__image img').attribute('src')
     if photo.nil?
       recipe_details[:photo] = ""
     else
       recipe_details[:photo] = photo.value
     end
+
+    ingredients = []
+    html_doc.search('ul.c-recipe-ingredients__list li').each do |element|
+      ingredients << element.text.strip
+    end
+    recipe_details[:ingredients] = ingredients
+
+    steps = []
+    html_doc.search('div.c-recipe-steps__item-content').each do |element|
+      steps << element.text.strip
+    end
+    recipe_details[:steps] = steps
+
+    recipe_details[:difficulty] = html_doc.search('ul.c-recipe-summary li:first-child').text.split(' ').drop(2).join(' ')
 
     recipes << recipe_details
   end
@@ -53,6 +70,9 @@ i = 1
         element.name = recipe[:name]
         element.description = recipe[:description]
         element.photo = recipe[:photo]
+        element.ingredients_list = recipe[:ingredients]
+        element.steps = recipe[:steps]
+        element.difficulty = recipe[:difficulty]
         element.save!
       end
     end
