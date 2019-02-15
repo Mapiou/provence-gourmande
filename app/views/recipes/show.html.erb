@@ -19,6 +19,10 @@
     <% end %>
   </div>
 
+  <div><%= @recipe.ingredients_list %></div>
+  <div><%= @recipe.steps %></div>
+  <div><%= @recipe.difficulty %></div>
+
   <div class="row">
     <div class="col-xs-12">
       <% unless @recipe.recipe_reviews.empty? %>
