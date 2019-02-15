@@ -4,6 +4,8 @@
 // @import "profile";
 // @import "map";
 
+@import "show";
+
 .container {
   margin-top: 70px;
 }
@@ -20,9 +22,15 @@ a:hover {
 
 h1 {
   font-size: 40px;
+  text-align: center;
 }
 
 h2 {
   font-family: "Open Sans", "Helvetica", "sans-serif";
   font-size: 22px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

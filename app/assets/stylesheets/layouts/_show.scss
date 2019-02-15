@@ -1,0 +1,54 @@
+.edit {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.edit a {
+  margin: 0 10px 0 0;
+  font-size: 16px;
+}
+
+section.parametres_recette {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 50px;
+  border-bottom: 1px $green dotted;
+}
+
+section.parametres_recette img {
+  flex-basis: 20%;
+}
+
+section.parametres_recette article {
+  flex-basis: 60%;
+}
+
+section.details_recette {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 50px;
+  border-bottom: 1px $green dotted;
+}
+
+section.details_recette article:first-child {
+  flex-basis: 30%;
+}
+
+section.details_recette article:last-child {
+  flex-basis: 60%;
+}
+
+section.details_recette li {
+  list-style-type: none;
+  padding: 5px 0;
+}
