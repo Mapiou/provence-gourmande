@@ -5,5 +5,16 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  background: rgba(250,250,250, 0.8) !important;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-top-color: rgba(250,250,250, 0.8) !important;
+  border-bottom-color: rgba(250,250,250, 0.8) !important;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: rgba(250,250,250, 0.8) !important;
+  border-bottom-color: rgba(250,250,250, 0.8) !important;
 }

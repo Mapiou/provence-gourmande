@@ -8,7 +8,8 @@ class RestaurantsController < ApplicationController
       {
         lng: restaurant.longitude,
         lat: restaurant.latitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant })
+        infoWindow: render_to_string(partial: "infoWindow", locals: { restaurant: restaurant }),
+        image_url: helpers.asset_url('ic_place_24px.svg')
       }
     end
   end

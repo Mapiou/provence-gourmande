@@ -5,6 +5,7 @@
     <div class="page-header">
       <h1>Les restaurants provençaux de la région</h1>
     </div>
+
     <div class="restaurant-cards">
       <% @restaurants.each do |restaurant| %>
         <a href="<%= restaurant_path(restaurant) %>" style="text-decoration: none">
@@ -64,24 +65,3 @@
 
   })();
 </script>
-
-<!-- <script>
-
-  markers.forEach((marker) => {
-
-  // Create a HTML element for your custom marker
-  const element = document.createElement('div');
-  element.className = 'marker';
-  element.style.backgroundImage = `url('${marker.image_url}')`;
-  element.style.backgroundSize = 'contain';
-  element.style.width = '25px';
-  element.style.height = '25px';
-
-  // Pass the element as an argument to the new marker
-  new mapboxgl.Marker(element)
-    .setLngLat([marker.lng, marker.lat])
-    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML(marker.infoWindow.content))
-    .addTo(map);
-});
-</script> -->
