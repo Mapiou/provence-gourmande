@@ -4,6 +4,9 @@
   </div>
   <h3> Description </h3>
   <p>  <%= @restaurant.description %> </p>
+  <h3> Informations pratiques </h3>
+  <p>  <%= @restaurant.address %> </p>
+  <p> ☎︎ <%= @restaurant.phone %> </p>
   <div class="row">
     <div class="col-xs-12">
       <% unless @restaurant.restaurant_reviews.empty? %>
