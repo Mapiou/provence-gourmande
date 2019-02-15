@@ -1,3 +1,5 @@
+<% content_for :title, @restaurant.name %>
+
 <div class="container">
   <div class="page-header">
     <h1> <%= @restaurant.name %> </h1>
@@ -8,9 +10,9 @@
   <p>  <%= @restaurant.address %> </p>
   <p> ☎︎ <%= @restaurant.phone %> </p>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <% unless @restaurant.restaurant_reviews.empty? %>
-        <h3>Commentaires</h3>
+        <h3>Commentaires (<%= @restaurant.restaurant_reviews.count %>)</h3>
         <ul class="list-group">
           <% @restaurant.restaurant_reviews.each do |review| %>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -29,7 +31,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <%= render "restaurant_reviews/new", restaurant: @restaurant, restaurant_review: @restaurant_review %>
     </div>
   </div>
