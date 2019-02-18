@@ -11,8 +11,9 @@
 
 .banner h1 {
   font-size: 50px;
-  margin-top: 30%;
+  margin-top: 15vh;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  height: 100px;
 }
 
 .banner p {
@@ -23,18 +24,15 @@
   margin-top: 10px;
 }
 
+.banner p + div{
+  margin: 8vh auto;
+  width: 90%;
+}
+
 .banner .btn {
-  margin: 80px 10px 10px 10px;
-  justify-content: center;
+  margin: 10px 0;
+  padding: 20px 0;
   width: 100%;
   font-size: 22px;
-}
-
-.banner .btn:hover {
-  color: white;
-}
-
-.banner-content div {
-  display: flex;
-  justify-content: center;
+  font-weight: bold;
 }
