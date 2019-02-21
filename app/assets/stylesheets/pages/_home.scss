@@ -7,12 +7,14 @@
 
 .icon-card i {
   font-size: 40px;
+  font-weight: bolder;
   color: $green;
 }
 
-.icon-card h2 {
-  color: $yellow;
+/*.icon-card h2 {
+  color: $green;
 }
+*/
 
 .icon-card p:last-child {
   padding: 15px;

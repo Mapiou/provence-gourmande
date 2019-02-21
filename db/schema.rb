@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2019_02_15_165113) do
     t.string "name"
     t.text "description"
     t.string "photo"
-    t.string "city"
     t.string "address"
     t.string "phone"
     t.string "price"
