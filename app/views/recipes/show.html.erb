@@ -14,7 +14,13 @@
   </div>
 
   <section class="parametres_recette">
-    <%= image_tag @recipe.photo, width: 200 %>
+
+    <% if @recipe.photo.present? %>
+      <%= image_tag @recipe.photo, width: 200 %>
+    <% else %>
+      <%= image_tag 'recipe.jpg', width: 200 %>
+    <% end %>
+
     <article>
       <p><strong><%= @recipe.description %></strong></p>
       <p><em><%= @recipe.difficulty %></em></p>
@@ -25,7 +31,7 @@
       <h2>Ingrédients</h2>
       <p>
         <ul>
-        <%= @recipe.ingredients_list.each do |ingredient| %>
+        <% @recipe.ingredients_list.each do |ingredient| %>
           <li><%= ingredient %></li>
         <% end %>
       </ul>
@@ -35,7 +41,7 @@
       <h2>Recette</h2>
       <p>
         <ul>
-        <%= @recipe.steps.each do |step| %>
+        <% @recipe.steps.each do |step| %>
           <li><%= step %></li>
         <% end %>
         </ul>
