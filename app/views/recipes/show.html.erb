@@ -25,7 +25,7 @@
       <h2>Ingrédients</h2>
       <p>
         <ul>
-        <%= @recipe.ingredients_list.each do |ingredient| %>
+        <% @recipe.ingredients_list.each do |ingredient| %>
           <li><%= ingredient %></li>
         <% end %>
       </ul>
@@ -35,7 +35,7 @@
       <h2>Recette</h2>
       <p>
         <ul>
-        <%= @recipe.steps.each do |step| %>
+        <% @recipe.steps.each do |step| %>
           <li><%= step %></li>
         <% end %>
         </ul>

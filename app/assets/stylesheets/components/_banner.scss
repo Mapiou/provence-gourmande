@@ -25,14 +25,14 @@
 
 .banner p + div{
   margin: 8vh auto;
-  width: 90%;
+  width: 60%;
 }
 
 .banner .btn {
   margin: 10px 0;
   padding: 16px 0;
-  width: 90%;
-  font-size: 22px;
+  width: 100%;
+  font-size: 18px;
   font-weight: bolder;
 }
 
@@ -45,12 +45,12 @@
   }
 
   .banner p {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .banner .btn {
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
   }
 
 }
